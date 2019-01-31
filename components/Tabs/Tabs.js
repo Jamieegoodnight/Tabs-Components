@@ -4,7 +4,7 @@ class TabLink {
     // Assign this.element to the passed in DOM element
     // this.element;
 
-  this.element=element;
+   this.element=element;
     
     // Get the custom data attribute on the Link
     // this.data;
@@ -14,16 +14,16 @@ class TabLink {
     // Using the custom data attribute get the associated Item element
     // this.itemElement;
 
-    this.itemElement = document.querySelector(`.tabs-item[data-tab='${data}']`);
+    this.itemElement = document.querySelector(`.tabs-item[data-tab='${this.data}']`);
     
     // Using the Item element, create a new instance of the TabItem class
     // this.tabItem;
 
-     this.tabItem=new TabItem(this.itemElement);
+    this.tabItem=new TabItem(this.itemElement);
     
     // Add a click event listener on this instance, calling the select method on click
 
-    this.element.addEventListener('click', () => {this.select()});
+    this.element.addEventListener('click', () => this.select());
   };
 
   select() {
@@ -39,7 +39,7 @@ class TabLink {
     // Add a class named "tabs-link-selected" to this link
     // this.element;
 
-    this.element.classList.add('tabs-links-selected');
+    this.element.classList.add('tabs-link-selected');
     
     // Call the select method on the item associated with this link
       this.tabItem.select();
@@ -56,7 +56,7 @@ class TabItem {
   select() {
     // Select all ".tabs-item" elements from the DOM
     // const items;
-    const items=documents.querySelectorAll('.tabs-items');
+    const items=documents.querySelectorAll('.tabs-item');
 
     // Remove the class "tabs-item-selected" from each element
     items.forEach(item => item.classList.remove('tabs-item-selected'));
@@ -71,7 +71,7 @@ class TabItem {
 
 // - Select all classes named ".tabs-link" and assign that value to the links variable
 
-const links=document.querySelectorAll('.tabs-link');
+let links=document.querySelectorAll('.tabs-link');
 
 // - With your selection in place, now chain a .forEach() method onto the links variable to iterate over the DOM NodeList
 
